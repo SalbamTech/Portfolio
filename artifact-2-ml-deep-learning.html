@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning vs. Deep Learning | Muhammad Abdulfatah</title>
+<meta name="description" content="A real-world comparison of traditional machine learning for email spam detection and deep learning for diabetic-retinopathy image recognition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1420;
+  --paper:#FAF8F3;
+  --card:#FFFFFF;
+  --text:#2A2F3A;
+  --muted:#667085;
+  --line:#DED9CF;
+  --amber:#C9932B;
+  --amber-deep:#8B6116;
+  --teal:#1F7775;
+  --blue:#315E8A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);font-size:16.5px;line-height:1.7}
+a{color:inherit}
+.hero{background:var(--ink);color:#F7F4ED;padding:28px 24px 64px}
+.hero-inner,.main{max-width:1040px;margin:0 auto}
+.back{display:inline-flex;align-items:center;gap:8px;color:#E2C987;text-decoration:none;font-size:.84rem;font-weight:600;margin-bottom:58px}
+.back:hover,.back:focus-visible{color:#FFF;outline:none}
+.eyebrow{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+h1,h2,h3{font-family:'Fraunces',serif;color:var(--ink);font-weight:600}
+h1{color:#FBF9F4;font-size:clamp(2.25rem,6vw,4rem);line-height:1.08;max-width:880px}
+.hero-copy{color:#C8CFDA;font-size:1.08rem;max-width:760px;margin-top:20px}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.tag{font-family:'IBM Plex Mono',monospace;border:1px solid rgba(201,147,43,.48);color:#E7D5A7;border-radius:999px;padding:5px 12px;font-size:.72rem}
+.main{padding:52px 24px 72px}
+section{padding:42px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+.label{font-family:'IBM Plex Mono',monospace;color:var(--amber-deep);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(1.65rem,3vw,2.25rem);margin-bottom:20px}
+h3{font-size:1.28rem;margin-bottom:10px}
+.lead{font-size:1.08rem;max-width:840px}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:26px}
+.panel.ml{border-top:5px solid var(--teal)}
+.panel.dl{border-top:5px solid var(--blue)}
+.panel p{color:var(--muted)}
+.panel ul,.case ul,.decision-grid ul{margin:15px 0 0 20px}
+.panel li,.case li,.decision-grid li{margin-bottom:7px}
+.case{display:grid;grid-template-columns:1.45fr .75fr;gap:28px;align-items:start;margin-top:26px}
+.case + .case{margin-top:42px}
+.evidence{background:var(--ink);color:#E6E9EF;border-radius:8px;padding:24px}
+.evidence strong{display:block;color:#F1D692;font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}
+.metric{font-family:'Fraunces',serif;font-size:1.8rem;color:#FFF;line-height:1.2;margin-top:16px}
+.metric-note{font-size:.84rem;color:#BBC2CE}
+.decision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.decision-grid>div{border-left:4px solid var(--amber);padding:6px 18px}
+.takeaway{background:#EDF6F5;border-left:5px solid var(--teal);padding:24px 26px;margin-top:28px}
+.skills{display:flex;flex-wrap:wrap;gap:9px}
+.skill{font-family:'IBM Plex Mono',monospace;background:var(--ink);color:#ECD79E;border-radius:999px;padding:6px 13px;font-size:.73rem}
+.sources{list-style:none}
+.sources li{padding:12px 0;border-bottom:1px dashed var(--line)}
+.sources li:last-child{border-bottom:0}
+.sources a{color:var(--blue);text-underline-offset:3px}
+footer{background:var(--ink);color:#9CA5B4;text-align:center;padding:28px 20px;font-size:.84rem}
+@media(max-width:760px){
+  .comparison,.case,.decision-grid{grid-template-columns:1fr}
+  .hero{padding-bottom:48px}
+  .back{margin-bottom:42px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back" href="index.html#artifacts">← Back to portfolio</a>
+    <p class="eyebrow">AIML-500 · Artifact 02 · Technical Case Analysis</p>
+    <h1>Machine Learning vs. Deep Learning</h1>
+    <p class="hero-copy">Two classification problems, two very different data environments. This case study explains why responsible model selection begins with fit, not novelty.</p>
+    <div class="tags">
+      <span class="tag">Model selection</span>
+      <span class="tag">Bayesian classification</span>
+      <span class="tag">Convolutional neural networks</span>
+      <span class="tag">Human oversight</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <section>
+    <p class="label">Project Overview</p>
+    <h2>The question behind the artifact</h2>
+    <p class="lead">When should a team use traditional machine learning, and when does a problem justify deep learning? I examined email spam detection and diabetic-retinopathy screening to compare the methods across data type, feature extraction, computing cost, explainability, operational risk, and human accountability.</p>
+
+    <div class="comparison">
+      <article class="panel ml">
+        <h3>Traditional Machine Learning</h3>
+        <p>Best suited to problems where useful signals can be represented directly and decisions need to remain understandable.</p>
+        <ul>
+          <li>Uses engineered or exposed features</li>
+          <li>Works with moderate labeled datasets</li>
+          <li>Requires less computing infrastructure</li>
+          <li>Supports easier investigation and adjustment</li>
+        </ul>
+      </article>
+      <article class="panel dl">
+        <h3>Deep Learning</h3>
+        <p>Best suited to high-dimensional, unstructured data where important patterns are difficult to define manually.</p>
+        <ul>
+          <li>Learns features from raw images</li>
+          <li>Benefits from large expert-labeled datasets</li>
+          <li>Captures complex spatial relationships</li>
+          <li>Requires stronger validation and monitoring</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Case 01</p>
+    <h2>Email spam detection</h2>
+    <div class="case">
+      <div>
+        <h3>Why traditional ML fits</h3>
+        <p>Apache SpamAssassin combines understandable message tests with Bayesian filtering. Its learning tool uses messages labeled as spam or legitimate email to identify statistically useful words and tokens. Email also provides direct signals such as links, sender information, message length, header irregularities, and suspicious phrases.</p>
+        <p>This approach fits an organization running its own mail infrastructure because it can operate on modest hardware, learn from user corrections, and give administrators understandable evidence when a legitimate message is blocked.</p>
+        <h3 style="margin-top:24px">Why deep learning is less suitable here</h3>
+        <p>A deep language model could detect sophisticated wording patterns, but it would require more data, computing resources, deployment support, and drift monitoring. For this operating environment, the added complexity may not produce enough value to justify the cost and reduced explainability.</p>
+      </div>
+      <aside class="evidence">
+        <strong>Selected Approach</strong>
+        <p class="metric">Bayesian filtering</p>
+        <p class="metric-note">Traditional machine learning supported by explicit rules and user feedback.</p>
+        <strong style="margin-top:22px">Decision Priority</strong>
+        <p>Transparency, efficiency, local control, and rapid correction of false positives.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Case 02</p>
+    <h2>Diabetic-retinopathy image recognition</h2>
+    <div class="case">
+      <div>
+        <h3>Why deep learning fits</h3>
+        <p>A retinal photograph contains millions of pixels and subtle disease indicators that vary in position, size, contrast, and appearance. A convolutional neural network can learn a hierarchy of edges, textures, shapes, and clinically meaningful patterns directly from expert-labeled images.</p>
+        <p>The original development study used 128,175 retinal images. A later postdeployment study of the automated retinal disease assessment system reported that more than 600,000 patients had been screened across Tamil Nadu, demonstrating that the model moved beyond laboratory validation into a real clinical workflow.</p>
+        <h3 style="margin-top:24px">Why traditional ML is less suitable here</h3>
+        <p>A conventional classifier would depend on specialists and engineers manually converting photographs into lesion counts, vessel measurements, color statistics, or texture features. That process can miss subtle pixel relationships and may become fragile when camera conditions or patient populations change.</p>
+      </div>
+      <aside class="evidence">
+        <strong>Selected Approach</strong>
+        <p class="metric">Deep CNN</p>
+        <p class="metric-note">Image recognition trained on a large collection of expert-graded retinal photographs.</p>
+        <strong style="margin-top:22px">Postdeployment Evidence</strong>
+        <p class="metric">97.0%</p>
+        <p class="metric-note">Sensitivity reported for severe nonproliferative or proliferative diabetic retinopathy.</p>
+        <p class="metric">96.4%</p>
+        <p class="metric-note">Specificity reported for the same severe disease category.</p>
+      </aside>
+    </div>
+    <div class="takeaway">
+      <strong>Human oversight remains essential.</strong>
+      The model supports screening, but positive, uncertain, and ungradable cases still require qualified clinical review. Performance must be monitored across patient groups, camera conditions, and deployment sites.
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Decision Framework</p>
+    <h2>How I evaluated model fit</h2>
+    <div class="decision-grid">
+      <div>
+        <h3>Data</h3>
+        <ul>
+          <li>Structured or unstructured?</li>
+          <li>How much labeled data exists?</li>
+          <li>Can useful features be defined?</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Operations</h3>
+        <ul>
+          <li>What infrastructure is available?</li>
+          <li>How quickly must the model run?</li>
+          <li>Who will maintain it?</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Responsibility</h3>
+        <ul>
+          <li>What is the cost of an error?</li>
+          <li>How important is explanation?</li>
+          <li>When must a person intervene?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Professional Relevance</p>
+    <h2>Skills demonstrated</h2>
+    <div class="skills">
+      <span class="skill">ML/DL differentiation</span>
+      <span class="skill">Model-selection judgment</span>
+      <span class="skill">Technical research</span>
+      <span class="skill">Evidence synthesis</span>
+      <span class="skill">Risk analysis</span>
+      <span class="skill">AI governance</span>
+      <span class="skill">Human-centered implementation</span>
+    </div>
+    <div class="takeaway">
+      <strong>Artifact value proposition</strong>
+      This work shows that I can translate technical differences between AI/ML methods into practical recommendations for leaders. I consider performance together with cost, explainability, deployment conditions, risk, and the people accountable for the final decision.
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Evidence Base</p>
+    <h2>Selected sources</h2>
+    <ul class="sources">
+      <li><a href="https://spamassassin.apache.org/" target="_blank" rel="noopener">Apache SpamAssassin</a>, project overview and filtering approach.</li>
+      <li><a href="https://spamassassin.apache.org/full/4.0.x/doc/sa-learn.html" target="_blank" rel="noopener">Apache sa-learn documentation</a>, Bayesian classifier training.</li>
+      <li><a href="https://doi.org/10.1001/jama.2016.17216" target="_blank" rel="noopener">Gulshan et al. (2016)</a>, development and validation of a deep-learning system for diabetic-retinopathy detection.</li>
+      <li><a href="https://doi.org/10.1001/jamanetworkopen.2025.0984" target="_blank" rel="noopener">Brant et al. (2025)</a>, postdeployment performance of deep-learning diabetic-retinopathy screening in India.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p>
+  <p>Indiana Wesleyan University</p>
+</footer>
+</body>
+</html>
