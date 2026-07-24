@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neural Networks, Explained Simply | Muhammad Abdulfatah</title>
+<meta name="description" content="A plain-language learning brief that explains how neural networks learn through examples, feedback, and adjustment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1420;--paper:#FAF8F3;--card:#fff;--text:#2A2F3A;--muted:#667085;--line:#DED9CF;--amber:#C9932B;--amber-deep:#8B6116;--teal:#1F7775;--teal-soft:#EAF5F3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);font-size:16.5px;line-height:1.7}
+.hero{background:var(--ink);color:#F7F4ED;padding:28px 24px 64px}
+.hero-inner,.main{max-width:1040px;margin:0 auto}
+.back{display:inline-flex;color:#E2C987;text-decoration:none;font-size:.84rem;font-weight:600;margin-bottom:58px}
+.back:hover,.back:focus-visible{color:#fff;outline:none}
+.eyebrow,.label{font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+.eyebrow{color:var(--amber);margin-bottom:14px}
+.label{color:var(--amber-deep);margin-bottom:8px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600}
+h1{font-size:clamp(2.35rem,6vw,4rem);line-height:1.08;max-width:850px}
+h2{font-size:clamp(1.65rem,3vw,2.25rem);color:var(--ink);margin-bottom:20px}
+h3{font-size:1.23rem;color:var(--ink);margin-bottom:8px}
+.hero-copy{color:#C8CFDA;font-size:1.08rem;max-width:750px;margin-top:20px}
+.tags,.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.tag,.skill{font-family:'IBM Plex Mono',monospace;border-radius:999px;padding:5px 12px;font-size:.72rem}
+.tag{border:1px solid rgba(201,147,43,.48);color:#E7D5A7}
+.skill{background:var(--ink);color:#ECD79E}
+.main{padding:52px 24px 72px}
+section{padding:42px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+.lead{font-size:1.09rem;max-width:850px}
+.analogy{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:26px}
+.card:first-child{border-top:5px solid var(--amber)}
+.card:last-child{border-top:5px solid var(--teal)}
+.card p{color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;list-style:none;counter-reset:steps;margin-top:26px}
+.flow li{counter-increment:steps;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:22px;min-height:150px}
+.flow li::before{content:"0" counter(steps);display:block;font-family:'IBM Plex Mono',monospace;color:var(--amber-deep);font-size:.75rem;letter-spacing:.12em;margin-bottom:10px}
+.flow strong{display:block;color:var(--ink);margin-bottom:5px}
+.takeaway{background:var(--teal-soft);border-left:5px solid var(--teal);padding:24px 26px;margin-top:28px;border-radius:0 8px 8px 0}
+.applications{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.applications div{border-left:4px solid var(--amber);padding:5px 18px}
+.limits{background:var(--ink);color:#E5E8EE;border-radius:9px;padding:30px;margin-top:24px}
+.limits h3{color:#F7F4ED}
+.strategy-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;list-style:none;margin-top:22px}
+.strategy-list li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px}
+.strategy-list strong{display:block;color:var(--ink)}
+footer{background:var(--ink);color:#9CA5B4;text-align:center;padding:28px 20px;font-size:.84rem}
+@media(max-width:760px){.analogy,.flow,.applications,.strategy-list{grid-template-columns:1fr}.hero{padding-bottom:48px}.back{margin-bottom:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <a class="back" href="index.html#artifacts">← Back to portfolio</a>
+    <p class="eyebrow">AIML-500 · Artifact 03 · Communication for Learning</p>
+    <h1>Neural Networks, Explained Simply</h1>
+    <p class="hero-copy">A complex machine-learning concept translated into a clear story, a six-step learning cycle, and practical guidance for nontechnical audiences.</p>
+    <div class="tags">
+      <span class="tag">Neural networks</span>
+      <span class="tag">Technical communication</span>
+      <span class="tag">Audience-centered learning</span>
+      <span class="tag">Responsible AI</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <section>
+    <p class="label">Start With Something Familiar</p>
+    <h2>Imagine teaching a child to recognize a cat</h2>
+    <p class="lead">At first, the child may guess incorrectly. After seeing many examples, the child begins noticing useful clues such as whiskers, pointed ears, paws, and a tail. Eventually, the child can recognize a cat they have never seen before. A neural network learns in a comparable way—through examples, feedback, and adjustment.</p>
+    <div class="analogy">
+      <article class="card">
+        <h3>The learner</h3>
+        <p>A child combines many small clues to form a more complete idea of what a cat looks like.</p>
+      </article>
+      <article class="card">
+        <h3>The neural network</h3>
+        <p>Layers of small pattern detectors combine edges, colors, textures, and shapes into a final prediction.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">The Learning Cycle</p>
+    <h2>How training works in six steps</h2>
+    <ol class="flow">
+      <li><strong>Receive an example</strong>The network is given data, such as a labeled picture.</li>
+      <li><strong>Detect patterns</strong>Early layers notice simple features; later layers combine them.</li>
+      <li><strong>Make a prediction</strong>The network estimates whether the image contains a cat, dog, or something else.</li>
+      <li><strong>Measure the error</strong>The prediction is compared with the correct answer using a loss function.</li>
+      <li><strong>Adjust connections</strong>The strengths, or weights, between artificial neurons are changed slightly.</li>
+      <li><strong>Repeat and improve</strong>Many examples and updates gradually improve performance on unfamiliar data.</li>
+    </ol>
+    <div class="takeaway">
+      <strong>The simplest useful definition:</strong>
+      A neural network is like a student that learns by studying examples, making predictions, receiving feedback, and gradually adjusting how it recognizes patterns.
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Why It Matters</p>
+    <h2>From learned patterns to useful applications</h2>
+    <div class="applications">
+      <div><h3>Language</h3><p>Speech recognition, translation, and conversational assistants.</p></div>
+      <div><h3>Vision</h3><p>Image classification, medical-image support, and object detection.</p></div>
+      <div><h3>Personalization</h3><p>Recommendation systems that identify patterns in user behavior.</p></div>
+    </div>
+    <div class="limits">
+      <h3>Pattern recognition is not human understanding</h3>
+      <p>Neural networks learn mathematical relationships in data. They do not understand a cat, a diagnosis, or a recommendation in the same way a person does. Their performance depends on the quality, quantity, diversity, and representativeness of their examples. Biased or inaccurate training data can produce biased or unreliable results.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Communication Design</p>
+    <h2>Strategies used to support learning</h2>
+    <ul class="strategy-list">
+      <li><strong>Analogy and storytelling</strong>A familiar teaching example makes an abstract process relatable.</li>
+      <li><strong>Chunking</strong>The training cycle is divided into six manageable ideas.</li>
+      <li><strong>Progressive disclosure</strong>The explanation moves from a simple story to layers, loss, and weights.</li>
+      <li><strong>Repetition</strong>A one-sentence definition reinforces the central idea.</li>
+      <li><strong>Real-world context</strong>Applications show why the concept matters outside the classroom.</li>
+      <li><strong>Balanced framing</strong>Limitations and data-quality risks prevent the analogy from becoming misleading.</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="label">Professional Relevance</p>
+    <h2>Skills demonstrated</h2>
+    <div class="skills">
+      <span class="skill">Technical translation</span>
+      <span class="skill">Audience analysis</span>
+      <span class="skill">ML fundamentals</span>
+      <span class="skill">Learning design</span>
+      <span class="skill">Prompt refinement</span>
+      <span class="skill">Responsible AI communication</span>
+    </div>
+    <div class="takeaway">
+      <strong>Artifact value proposition</strong>
+      This work shows that I can translate complex AI/ML concepts into accurate, engaging communication for nontechnical stakeholders. That capability helps organizations build shared understanding, reduce resistance, and connect technical implementation with responsible business decisions.
+    </div>
+  </section>
+
+  <section>
+    <p class="label">AI Tool Disclosure</p>
+    <h2>How generative AI supported the work</h2>
+    <p class="lead">I used OpenAI Codex, a generative AI assistant, to compare drafts, test alternative wording and analogies, improve organization, and check the explanation for technical overstatement. I reviewed and refined the final content for accuracy, clarity, audience fit, and alignment with the course communication strategies.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p>
+  <p>Indiana Wesleyan University</p>
+</footer>
+</body>
+</html>
