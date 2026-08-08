@@ -343,6 +343,24 @@ h3,
   background: rgba(255, 255, 255, 0.11);
 }
 
+.button-outline {
+  border-color: #b8c8cd;
+  background: var(--surface);
+  color: var(--teal-dark);
+}
+
+.button-outline:hover {
+  border-color: var(--teal);
+  background: var(--surface-blue);
+}
+
+.artifact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
 .hero-visual {
   position: relative;
 }
