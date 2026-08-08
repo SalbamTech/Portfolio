@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A human-centered, security-aware implementation plan for an AI-powered support chatbot by Muhammad Abdulfatah.">
+  <meta name="theme-color" content="#071522">
+  <title>AI Chatbot Implementation Plan | Muhammad Abdulfatah</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#artifact-content">Skip to artifact</a>
+  <header class="site-header"><div class="container nav-shell"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">MA</span><span>Muhammad Abdulfatah<small>Secure &amp; Responsible AI</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation"><span aria-hidden="true"></span></button><nav aria-label="Main navigation"><ul class="nav-list" id="main-navigation" data-open="false"><li><a href="index.html#about">About</a></li><li><a href="index.html#audience">Audience</a></li><li><a href="index.html#value">Value</a></li><li><a aria-current="page" href="index.html#artifacts">Artifacts</a></li><li><a class="nav-cta" href="index.html#contact">Connect</a></li></ul></nav></div></header>
+
+  <main id="artifact-content">
+    <header class="detail-hero">
+      <div class="container">
+        <a class="breadcrumb" href="index.html#artifacts">Back to all artifacts</a>
+        <div class="detail-hero-grid">
+          <div>
+            <p class="eyebrow">Artifact 05 · Human-centered implementation</p>
+            <h1>AI-Powered Chatbot Design &amp; Implementation Plan</h1>
+            <p class="hero-lead">An end-to-end plan that starts with user needs and carries them through architecture selection, prototype design, guardrails, testing, monitoring, and responsible change adoption.</p>
+            <ul class="pill-list" aria-label="Topics"><li>Design thinking</li><li>Chatbase prototype</li><li>RAG planning</li><li>Guardrails</li><li>Monitoring</li></ul>
+          </div>
+          <dl class="detail-aside"><dt>Course context</dt><dd>AIML-500 · AI Lab, Part 2</dd><dt>Artifact format</dt><dd>Implementation plan · prototype case study</dd><dt>Primary audience</dt><dd>Product teams, AI practitioners, and business stakeholders</dd></dl>
+        </div>
+      </div>
+    </header>
+
+    <div class="container detail-main">
+      <section class="artifact-info" aria-label="Artifact information">
+        <article class="info-card"><strong>Introduction</strong><p>A design-thinking plan for a support chatbot that improves access without removing human accountability.</p></article>
+        <article class="info-card"><strong>Objective</strong><p>Translate a user problem into a feasible chatbot prototype, test strategy, and responsible deployment plan.</p></article>
+        <article class="info-card"><strong>Process</strong><p>Empathize, define, ideate, select architecture, prototype, test, establish controls, and monitor.</p></article>
+        <article class="info-card"><strong>Tools &amp; tech</strong><p>Chatbase, design worksheets, prompt design, knowledge retrieval, test matrices, and risk controls.</p></article>
+      </section>
+
+      <div class="detail-layout">
+        <div class="detail-content">
+          <section class="detail-section" id="description">
+            <p class="eyebrow">Description</p>
+            <h2>The problem is not “build a chatbot.”</h2>
+            <p class="lead">The real problem is helping customers and support staff find accurate, consistent answers quickly—without pretending automation can resolve every situation. The plan centers common questions, after-hours access, knowledge consistency, clear escalation, privacy, and continuous improvement.</p>
+            <figure class="artifact-image support-figure">
+              <img src="assets/images/customer-support-team.jpg" alt="Customer-support professionals collaborating at their workstations" width="1600" height="1067" loading="lazy">
+              <figcaption>Customer-support team at work. Photo by <a href="https://www.pexels.com/photo/people-working-in-the-office-5453808/" target="_blank" rel="noopener noreferrer">Tima Miroshnichenko via Pexels</a>.</figcaption>
+            </figure>
+            <div class="content-grid">
+              <article class="content-card gold"><h3>User need</h3><p>Customers need fast answers and an obvious path to a person when the request is complex, sensitive, or unresolved.</p></article>
+              <article class="content-card accent"><h3>Organizational need</h3><p>Support teams need fewer repetitive requests, controlled knowledge sources, visible failure patterns, and safe escalation.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="design-thinking">
+            <p class="eyebrow">Tangible artifact</p>
+            <h2>The design-thinking pathway</h2>
+            <ol class="step-list">
+              <li><strong>Empathize</strong>Identify customers, support staff, common pain points, access needs, and trust concerns.</li>
+              <li><strong>Define</strong>Frame a bounded problem: answer approved support questions and route exceptions safely.</li>
+              <li><strong>Ideate</strong>Compare rule-based, retrieval-augmented, and generative approaches.</li>
+              <li><strong>Prototype</strong>Configure a Chatbase agent with approved sources, clear instructions, and escalation language.</li>
+              <li><strong>Test</strong>Evaluate normal questions, ambiguity, unsupported topics, adversarial prompts, and privacy boundaries.</li>
+              <li><strong>Improve</strong>Review failures, update knowledge, measure outcomes, and involve owners before expanding scope.</li>
+            </ol>
+          </section>
+
+          <section class="detail-section" id="architecture">
+            <p class="eyebrow">Architecture decision</p>
+            <h2>Choose control before capability.</h2>
+            <div class="case-grid three">
+              <article class="case-card"><h3>Rule-based</h3><p><strong>Strength:</strong> predictable and easy to audit.</p><p><strong>Limit:</strong> brittle when users phrase questions in unexpected ways.</p></article>
+              <article class="case-card accent"><h3>Retrieval-augmented</h3><p><strong>Strength:</strong> grounds answers in approved organizational sources while supporting natural language.</p><p><strong>Fit:</strong> preferred starting architecture for bounded support knowledge.</p></article>
+              <article class="case-card gold"><h3>Fully generative</h3><p><strong>Strength:</strong> flexible and conversational.</p><p><strong>Limit:</strong> greater risk of unsupported, inconsistent, or overly confident answers.</p></article>
+            </div>
+            <div class="callout"><strong>Selected direction</strong>Begin with retrieval over approved content, tightly bounded instructions, citations or source links where available, and a visible human handoff. Expand only after measured evidence shows the system is reliable.</div>
+          </section>
+
+          <section class="detail-section" id="controls">
+            <p class="eyebrow">Guardrails &amp; testing</p>
+            <h2>A deployment checklist built around trust.</h2>
+            <div class="content-grid">
+              <article class="content-card gold"><h3>Content controls</h3><ul><li>Use approved, versioned knowledge sources</li><li>Decline topics outside the support scope</li><li>Label uncertainty and avoid invented policies</li><li>Separate draft content from published content</li></ul></article>
+              <article class="content-card accent"><h3>Security &amp; privacy</h3><ul><li>Minimize personal and confidential data</li><li>Test prompt-injection and data-disclosure attempts</li><li>Restrict integrations and permissions</li><li>Log safely and define retention expectations</li></ul></article>
+              <article class="content-card"><h3>Human oversight</h3><ul><li>Provide a clear escalation path</li><li>Route safety, legal, and emotionally complex issues</li><li>Assign owners for knowledge and risk</li><li>Make feedback easy for users and staff</li></ul></article>
+              <article class="content-card"><h3>Operational metrics</h3><ul><li>Resolution and escalation rates</li><li>Unsupported-answer and complaint rates</li><li>Source freshness and retrieval quality</li><li>Performance by question category and channel</li></ul></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="process">
+            <p class="eyebrow">Process</p>
+            <h2>How decisions move toward deployment</h2>
+            <div class="comparison-grid">
+              <article class="content-card gold"><h3>Before launch</h3><ul><li>Confirm purpose, scope, owners, and prohibited uses</li><li>Approve source content and escalation routes</li><li>Run happy-path, edge-case, and adversarial tests</li><li>Set acceptance thresholds and rollback conditions</li></ul></article>
+              <article class="content-card accent"><h3>After launch</h3><ul><li>Review unanswered and low-confidence questions</li><li>Monitor quality, drift, privacy, and user impact</li><li>Update sources through controlled change</li><li>Expand capability only through documented evidence</li></ul></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="value-proposition">
+            <p class="eyebrow">Value proposition of the artifact</p>
+            <h2>Why this work matters</h2>
+            <div class="content-grid">
+              <article class="content-card gold"><h3>Unique value</h3><p>This plan demonstrates my ability to turn an AI concept into a practical implementation pathway while integrating user experience, technical feasibility, security, governance, testing, and change management.</p></article>
+              <article class="content-card accent"><h3>Relevance</h3><p>Many organizations begin their AI adoption with a chatbot. Product and engineering teams need professionals who can help ensure that the first deployment solves a real problem, respects boundaries, and creates evidence for responsible improvement.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="references">
+            <p class="eyebrow">References</p>
+            <h2>Implementation guidance</h2>
+            <ul class="source-list">
+              <li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank" rel="noopener">NIST (2023). Artificial Intelligence Risk Management Framework (AI RMF 1.0).</a></li>
+              <li><a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/" target="_blank" rel="noopener">OWASP GenAI Security Project. LLM01:2025 Prompt Injection.</a></li>
+              <li><a href="https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/" target="_blank" rel="noopener">OWASP GenAI Security Project. LLM02:2025 Sensitive Information Disclosure.</a></li>
+              <li><a href="https://www.chatbase.co/docs/user-guides/chatbot/deploy" target="_blank" rel="noopener">Chatbase documentation: deployment channels and chat-widget configuration.</a></li>
+            </ul>
+          </section>
+
+          <a class="next-project" href="index.html#artifacts"><span><small>Portfolio overview</small><strong>Return to all featured artifacts</strong></span><span aria-hidden="true">→</span></a>
+        </div>
+        <nav class="detail-nav" aria-label="On this page"><strong>On this page</strong><ul><li><a href="#description">Description</a></li><li><a href="#design-thinking">Design pathway</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#controls">Guardrails</a></li><li><a href="#process">Process</a></li><li><a href="#value-proposition">Value proposition</a></li><li><a href="#references">References</a></li></ul></nav>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p><p><a href="index.html#artifacts">All artifacts</a> · <a href="mailto:muhammad.abdulfatah@myemail.indwes.edu">Contact</a></p></div></footer>
+</body>
+</html>

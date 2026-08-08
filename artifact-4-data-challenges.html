@@ -1,193 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsible Machine Learning — Data Challenge Scenarios</title>
-<meta name="description" content="A professional case study on missing data, temporal fraud shifts, class imbalance, fairness, and interpretable AI by Muhammad Abdulfatah.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&amp;family=Inter:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<style>
-:root{--ink:#0E1420;--ink-soft:#1B2536;--amber:#C9932B;--amber-deep:#9A6E1B;--paper:#FAF8F3;--card:#fff;--text:#2A2F3A;--muted:#6B7280;--line:#E5E1D8;--teal:#2F6F68;--teal-soft:#E8F1EF}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--text);line-height:1.72;font-size:16.5px}
-.hero{background:var(--ink);color:#F6F2E9;padding:58px 24px 66px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;opacity:.07;background-image:linear-gradient(30deg,transparent 48%,#C9932B 48%,#C9932B 52%,transparent 52%),linear-gradient(150deg,transparent 48%,#C9932B 48%,#C9932B 52%,transparent 52%);background-size:56px 56px}
-.hero-inner,.main{max-width:1060px;margin:auto;position:relative}
-.back{display:inline-block;color:#E3CE9A;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.76rem;letter-spacing:.08em;margin-bottom:50px}
-.back:hover,.back:focus-visible{color:#fff;outline:none}
-.eyebrow,.label{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
-h1,h2,h3{font-family:'Fraunces',serif}
-h1{font-size:clamp(2.3rem,5.5vw,4rem);line-height:1.08;max-width:820px}
-h2{font-size:clamp(1.65rem,3.3vw,2.25rem);line-height:1.2;color:var(--ink);margin-bottom:20px}
-h3{font-size:1.23rem;color:var(--ink);margin-bottom:8px}
-.hero-copy{color:#C8CFDA;font-size:1.08rem;max-width:780px;margin-top:20px}
-.tags,.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
-.tag,.skill{font-family:'IBM Plex Mono',monospace;border-radius:999px;padding:5px 12px;font-size:.72rem}
-.tag{border:1px solid rgba(201,147,43,.48);color:#E7D5A7}
-.skill{background:var(--ink);color:#ECD79E}
-.main{padding:52px 24px 72px}
-section{padding:42px 0;border-bottom:1px solid var(--line)}
-section:last-child{border-bottom:0}
-.lead{font-size:1.08rem;max-width:860px}
-.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
-.scenario{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;border-top:5px solid var(--amber)}
-.scenario:nth-child(2){border-top-color:var(--teal)}
-.scenario:nth-child(3){border-top-color:var(--ink-soft)}
-.scenario-num{font-family:'IBM Plex Mono',monospace;color:var(--amber-deep);font-size:.72rem;letter-spacing:.14em;margin-bottom:12px}
-.scenario strong{display:block;color:var(--ink);margin-top:14px;margin-bottom:3px;font-size:.9rem}
-.framework{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;list-style:none;counter-reset:steps;margin-top:26px}
-.framework li{counter-increment:steps;background:var(--card);border:1px solid var(--line);border-radius:9px;padding:18px;min-height:150px}
-.framework li::before{content:"0" counter(steps);display:block;font-family:'IBM Plex Mono',monospace;color:var(--amber-deep);font-size:.72rem;margin-bottom:9px}
-.framework strong{display:block;color:var(--ink);margin-bottom:5px}
-.takeaway{background:var(--teal-soft);border-left:5px solid var(--teal);padding:24px 26px;margin-top:28px;border-radius:0 8px 8px 0}
-.takeaway strong{display:block;color:var(--ink);margin-bottom:5px}
-.comparison{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:24px}
-.card ul{margin:10px 0 0 20px}
-.card li{margin-bottom:7px}
-.reflection{background:var(--ink);color:#E6E9EF;border-radius:10px;padding:30px;margin-top:22px}
-.reflection h3{color:#fff}
-.reflection p{color:#D0D5DE}
-footer{background:var(--ink);color:#9CA5B4;text-align:center;padding:28px 20px;font-size:.84rem}
-@media(max-width:900px){.scenario-grid{grid-template-columns:1fr}.framework{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:650px){.comparison,.framework{grid-template-columns:1fr}.hero{padding-bottom:48px}.back{margin-bottom:38px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A case study on missing data, temporal shift, class imbalance, fairness, and interpretable machine learning.">
+  <meta name="theme-color" content="#071522">
+  <title>Responsible ML Data Challenges | Muhammad Abdulfatah</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <a class="back" href="index.html#artifacts">← Back to portfolio</a>
-    <p class="eyebrow">AIML-500 · Artifact 04 · Responsible ML Decisions</p>
-    <h1>Responsible Machine Learning: Data Challenge Scenarios</h1>
-    <p class="hero-copy">Three practical cases showing how data quality, time, imbalance, fairness, and explainability change the way a machine-learning system should be designed and evaluated.</p>
-    <div class="tags">
-      <span class="tag">Data quality</span>
-      <span class="tag">Temporal validation</span>
-      <span class="tag">Class imbalance</span>
-      <span class="tag">Fairness</span>
-      <span class="tag">Interpretability</span>
+  <a class="skip-link" href="#artifact-content">Skip to artifact</a>
+  <header class="site-header"><div class="container nav-shell"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">MA</span><span>Muhammad Abdulfatah<small>Secure &amp; Responsible AI</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation"><span aria-hidden="true"></span></button><nav aria-label="Main navigation"><ul class="nav-list" id="main-navigation" data-open="false"><li><a href="index.html#about">About</a></li><li><a href="index.html#audience">Audience</a></li><li><a href="index.html#value">Value</a></li><li><a aria-current="page" href="index.html#artifacts">Artifacts</a></li><li><a class="nav-cta" href="index.html#contact">Connect</a></li></ul></nav></div></header>
+
+  <main id="artifact-content">
+    <header class="detail-hero">
+      <div class="container">
+        <a class="breadcrumb" href="index.html#artifacts">Back to all artifacts</a>
+        <div class="detail-hero-grid">
+          <div>
+            <p class="eyebrow">Artifact 04 · Responsible ML decisions</p>
+            <h1>Responsible Machine Learning: Data Challenge Scenarios</h1>
+            <p class="hero-lead">Three practical cases showing how data quality, time, imbalance, fairness, and explanation requirements change the way a machine-learning system should be designed and evaluated.</p>
+            <ul class="pill-list" aria-label="Topics"><li>Data quality</li><li>Temporal validation</li><li>Class imbalance</li><li>Fairness</li><li>Interpretability</li></ul>
+          </div>
+          <dl class="detail-aside"><dt>Course context</dt><dd>AIML-500 · Data Challenge Scenarios</dd><dt>Artifact format</dt><dd>Interactive analysis · web case study</dd><dt>Primary audience</dt><dd>ML practitioners, technical leaders, and governance teams</dd></dl>
+        </div>
+      </div>
+    </header>
+
+    <div class="container detail-main">
+      <section class="artifact-info" aria-label="Artifact information">
+        <article class="info-card"><strong>Introduction</strong><p>A three-scenario case study connecting data problems to responsible model decisions.</p></article>
+        <article class="info-card"><strong>Objective</strong><p>Evaluate data processing, validation, fairness, monitoring, and governance choices.</p></article>
+        <article class="info-card"><strong>Process</strong><p>Respond to scenarios, test assumptions, evaluate feedback, revise decisions, and synthesize controls.</p></article>
+        <article class="info-card"><strong>Tools &amp; tech</strong><p>SchoolAI Coach, OpenAI Codex, preprocessing, temporal validation, fairness metrics, and HTML/CSS.</p></article>
+      </section>
+
+      <div class="detail-layout">
+        <div class="detail-content">
+          <section class="detail-section" id="description">
+            <p class="eyebrow">Description</p>
+            <h2>From data problems to defensible decisions.</h2>
+            <p class="lead">The original activity used an AI coach to present progressively complex data scenarios. Each one required a decision, supporting reasoning, and a response to feedback. I adapted that work into a professional case study focused on the assumptions, trade-offs, and safeguards that generalize to real ML projects.</p>
+            <figure class="artifact-image"><img src="assets/images/responsible-ml-workflow.jpg" alt="Abstract model-evaluation workflow showing data layers, branching decisions, and a human oversight checkpoint" width="1536" height="1024" loading="lazy"><figcaption>Supporting illustration: responsible ML requires connected decisions across data, evaluation, governance, and human oversight.</figcaption></figure>
+          </section>
+
+          <section class="detail-section" id="scenarios">
+            <p class="eyebrow">Tangible artifact</p>
+            <h2>Three scenarios, three risk profiles</h2>
+            <div class="case-grid three">
+              <article class="case-card gold"><p class="project-number">Scenario 01</p><h3>Missing telecom data</h3><p><strong>Challenge:</strong> Fifteen percent of customer-service call counts were missing or incomplete in a churn dataset.</p><p><strong>Decision:</strong> Investigate the missingness mechanism, reconcile records with source logs, add a missingness indicator, and compare robust imputation methods.</p><p><strong>Control:</strong> Fit preprocessing on training data only, run sensitivity tests, and monitor missingness by time, plan, and call center.</p></article>
+              <article class="case-card accent"><p class="project-number">Scenario 02</p><h3>Fraud under temporal shift</h3><p><strong>Challenge:</strong> Fraud was rare, increased sharply, changed form, and included a feature collected only in recent months.</p><p><strong>Decision:</strong> Use time-based validation, class weighting, operational metrics, and separate stable-feature and recent-feature models.</p><p><strong>Control:</strong> Test on the newest mature labels, retain a fallback model, and monitor drift after deployment.</p></article>
+              <article class="case-card"><p class="project-number">Scenario 03</p><h3>Biased hiring text</h3><p><strong>Challenge:</strong> Resume text was unstructured, historical labels were noisy, outcomes differed by group, and explanations were required.</p><p><strong>Decision:</strong> Use decision support only, extract job-related evidence, create rubric-based labels, and favor an interpretable approach.</p><p><strong>Control:</strong> Evaluate subgroup errors, run matched-resume tests, preserve human review, and provide an appeal path.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="framework">
+            <p class="eyebrow">Reusable method</p>
+            <h2>A five-step decision framework</h2>
+            <ol class="step-list">
+              <li><strong>Diagnose</strong>Identify how the data problem arose before selecting a statistical fix.</li>
+              <li><strong>Protect</strong>Prevent leakage and preserve realistic time, prevalence, and deployment conditions.</li>
+              <li><strong>Compare</strong>Test reasonable alternatives instead of relying on one preferred technique.</li>
+              <li><strong>Evaluate</strong>Use metrics tied to business costs, affected groups, and operational capacity.</li>
+              <li><strong>Monitor</strong>Define drift, fairness, and data-quality signals that trigger investigation or retraining.</li>
+            </ol>
+            <div class="callout"><strong>Central lesson</strong>A model can be technically accurate and still be unreliable or harmful if its data assumptions, validation design, explanations, or deployment controls are weak.</div>
+          </section>
+
+          <section class="detail-section" id="process">
+            <p class="eyebrow">Process</p>
+            <h2>How the learning activity became a professional artifact</h2>
+            <div class="comparison-grid">
+              <article class="content-card gold"><h3>Original activity</h3><ul><li>Conversational responses to an AI coach</li><li>Immediate feedback and follow-up questions</li><li>Detailed exploration of possible techniques</li></ul></article>
+              <article class="content-card accent"><h3>Portfolio adaptation</h3><ul><li>Concise decisions organized by business problem</li><li>Explicit assumptions, controls, and deployment risks</li><li>A reusable framework for technical and governance audiences</li></ul></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="value-proposition">
+            <p class="eyebrow">Value proposition of the artifact</p>
+            <h2>Why this work matters</h2>
+            <div class="content-grid">
+              <article class="content-card gold"><h3>Unique value</h3><p>This work demonstrates my ability to diagnose data problems, select defensible ML strategies, and explain trade-offs in business terms while connecting model performance to fairness, resilience, and accountability.</p></article>
+              <article class="content-card accent"><h3>Relevance</h3><p>Technical and governance teams need practitioners who recognize that preprocessing and validation choices encode assumptions about people, time, risk, and acceptable error. This artifact makes those assumptions visible.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="references">
+            <p class="eyebrow">References &amp; tool disclosure</p>
+            <h2>Source context</h2>
+            <p class="lead">The scenarios and feedback originated in the course-provided SchoolAI Data Challenge Scenarios Coach; no external references were required for the original submission.</p>
+            <div class="callout"><strong>AI tool disclosure</strong>I used SchoolAI for the original interactive activity and OpenAI Codex to shorten, reorganize, and present the work for this portfolio. I reviewed the final content and take responsibility for the decisions, reasoning, and presentation.</div>
+          </section>
+
+          <a class="next-project" href="artifact-5-chatbot-plan.html"><span><small>Next artifact</small><strong>AI-Powered Chatbot Design &amp; Implementation Plan</strong></span><span aria-hidden="true">→</span></a>
+        </div>
+        <nav class="detail-nav" aria-label="On this page"><strong>On this page</strong><ul><li><a href="#description">Description</a></li><li><a href="#scenarios">Scenarios</a></li><li><a href="#framework">Framework</a></li><li><a href="#process">Process</a></li><li><a href="#value-proposition">Value proposition</a></li><li><a href="#references">References</a></li></ul></nav>
+      </div>
     </div>
-  </div>
-</header>
-
-<main class="main">
-  <section>
-    <p class="label">Artifact Overview</p>
-    <h2>From data problems to defensible decisions</h2>
-    <p class="lead">This artifact began as an interactive conversation with an AI coach. Each scenario required a decision, supporting reasoning, and a response to feedback. I revised that work into a concise case study for technical leaders who need to understand not only what method was selected, but also what assumptions, trade-offs, and safeguards make the choice responsible.</p>
-  </section>
-
-  <section>
-    <p class="label">The Three Cases</p>
-    <h2>Different data, different risks</h2>
-    <div class="scenario-grid">
-      <article class="scenario">
-        <p class="scenario-num">SCENARIO / 01</p>
-        <h3>Missing telecom data</h3>
-        <strong>Challenge</strong>
-        <p>Fifteen percent of customer-service call counts were missing or incomplete in a churn dataset.</p>
-        <strong>Decision</strong>
-        <p>Investigate the missingness mechanism, reconcile partial records with source logs, add a missingness indicator, and compare robust imputation methods.</p>
-        <strong>Control</strong>
-        <p>Fit preprocessing only on training data, run sensitivity tests, and monitor missingness by time, plan, and call center.</p>
-      </article>
-
-      <article class="scenario">
-        <p class="scenario-num">SCENARIO / 02</p>
-        <h3>Fraud under temporal shift</h3>
-        <strong>Challenge</strong>
-        <p>Fraud was rare, rose sharply in June, changed form, and included a predictive feature collected only from April onward.</p>
-        <strong>Decision</strong>
-        <p>Use time-based validation, class weighting, operational fraud metrics, and separate stable-feature and recent-feature models.</p>
-        <strong>Control</strong>
-        <p>Test on the most recent month, retain a fallback model, verify label maturity, and monitor drift after deployment.</p>
-      </article>
-
-      <article class="scenario">
-        <p class="scenario-num">SCENARIO / 03</p>
-        <h3>Biased hiring text</h3>
-        <strong>Challenge</strong>
-        <p>Resume text was unstructured, historical hiring labels were noisy, outcomes differed by demographic group, and explanations were required.</p>
-        <strong>Decision</strong>
-        <p>Use the system only for decision support, extract job-related evidence, create rubric-based labels, and favor an interpretable scoring approach.</p>
-        <strong>Control</strong>
-        <p>Evaluate subgroup errors, run matched-resume counterfactual tests, preserve human review, and provide an appeal path.</p>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <p class="label">Reusable Method</p>
-    <h2>A five-step decision framework</h2>
-    <ol class="framework">
-      <li><strong>Diagnose</strong>Identify how the data problem arose before selecting a statistical fix.</li>
-      <li><strong>Protect</strong>Prevent leakage and preserve realistic time, prevalence, and deployment conditions.</li>
-      <li><strong>Compare</strong>Test reasonable alternatives instead of relying on one preferred technique.</li>
-      <li><strong>Evaluate</strong>Use metrics tied to business costs, affected groups, and operational capacity.</li>
-      <li><strong>Monitor</strong>Define drift, fairness, and data-quality signals that trigger investigation or retraining.</li>
-    </ol>
-    <div class="takeaway">
-      <strong>Central lesson</strong>
-      A model can be technically accurate and still be unreliable or harmful if its data assumptions, validation design, explanations, or deployment controls are weak.
-    </div>
-  </section>
-
-  <section>
-    <p class="label">Professional Adaptation</p>
-    <h2>How the original work was revised</h2>
-    <div class="comparison">
-      <article class="card">
-        <h3>Original learning activity</h3>
-        <ul>
-          <li>Conversational responses to an AI coach</li>
-          <li>Immediate feedback and follow-up questions</li>
-          <li>Detailed exploration of possible techniques</li>
-        </ul>
-      </article>
-      <article class="card">
-        <h3>Portfolio version</h3>
-        <ul>
-          <li>Concise decisions organized by business problem</li>
-          <li>Explicit assumptions, controls, and deployment risks</li>
-          <li>A reusable framework for technical and governance audiences</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <p class="label">Professional Relevance</p>
-    <h2>Skills demonstrated</h2>
-    <div class="skills">
-      <span class="skill">Missing-data analysis</span>
-      <span class="skill">Leakage prevention</span>
-      <span class="skill">Temporal validation</span>
-      <span class="skill">Imbalanced learning</span>
-      <span class="skill">Fairness evaluation</span>
-      <span class="skill">Model interpretability</span>
-      <span class="skill">Human oversight</span>
-      <span class="skill">Drift monitoring</span>
-    </div>
-    <div class="reflection">
-      <h3>Reflection</h3>
-      <p>This work strengthened my ability to evaluate trade-offs rather than assume the most complex model is automatically the best. It also showed me that responsible machine learning is an ongoing practice: data must be understood, decisions must be explainable, affected groups must be evaluated, and deployed systems must remain open to correction.</p>
-    </div>
-  </section>
-
-  <section>
-    <p class="label">AI Tool Disclosure</p>
-    <h2>How generative AI supported the work</h2>
-    <p class="lead">I used the SchoolAI Data Challenge Scenarios Coach for the original interactive activity and OpenAI Codex to refine, shorten, and reorganize my responses for this portfolio audience. I reviewed the final content and take responsibility for the decisions, reasoning, and presentation.</p>
-  </section>
-</main>
-
-<footer>
-  <p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p>
-  <p>Indiana Wesleyan University</p>
-</footer>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p><p><a href="index.html#artifacts">All artifacts</a> · <a href="mailto:muhammad.abdulfatah@myemail.indwes.edu">Contact</a></p></div></footer>
 </body>
 </html>
