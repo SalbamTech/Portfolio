@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A case study on missing data, temporal shift, class imbalance, fairness, and interpretable machine learning.">
+  <meta name="theme-color" content="#071522">
+  <title>Responsible ML Data Challenges | Muhammad Abdulfatah</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#artifact-content">Skip to artifact</a>
+  <header class="site-header"><div class="container nav-shell"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">MA</span><span>Muhammad Abdulfatah<small>Secure &amp; Responsible AI</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation"><span aria-hidden="true"></span></button><nav aria-label="Main navigation"><ul class="nav-list" id="main-navigation" data-open="false"><li><a href="index.html#about">About</a></li><li><a href="index.html#audience">Audience</a></li><li><a href="index.html#value">Value</a></li><li><a aria-current="page" href="index.html#artifacts">Artifacts</a></li><li><a class="nav-cta" href="index.html#contact">Connect</a></li></ul></nav></div></header>
+
+  <main id="artifact-content">
+    <header class="detail-hero">
+      <div class="container">
+        <a class="breadcrumb" href="index.html#additional-work">Back to additional work</a>
+        <div class="detail-hero-grid">
+          <div>
+            <p class="eyebrow">Additional work · Responsible ML decisions</p>
+            <h1>Responsible Machine Learning: Data Challenge Scenarios</h1>
+            <p class="hero-lead">Three practical cases showing how data quality, time, imbalance, fairness, and explanation requirements change the way a machine-learning system should be designed and evaluated.</p>
+            <ul class="pill-list" aria-label="Topics"><li>Data quality</li><li>Temporal validation</li><li>Class imbalance</li><li>Fairness</li><li>Interpretability</li></ul>
+          </div>
+          <dl class="detail-aside"><dt>Course context</dt><dd>AIML-500 · Data Challenge Scenarios</dd><dt>Artifact format</dt><dd>Interactive analysis · web case study</dd><dt>Primary audience</dt><dd>ML practitioners, technical leaders, and governance teams</dd></dl>
+        </div>
+      </div>
+    </header>
+
+    <div class="container detail-main">
+      <section class="artifact-info" aria-label="Artifact information">
+        <article class="info-card"><strong>Introduction</strong><p>A three-scenario case study connecting data problems to responsible model decisions.</p></article>
+        <article class="info-card"><strong>Objective</strong><p>Evaluate data processing, validation, fairness, monitoring, and governance choices.</p></article>
+        <article class="info-card"><strong>Process</strong><p>Respond to scenarios, test assumptions, evaluate feedback, revise decisions, and synthesize controls.</p></article>
+        <article class="info-card"><strong>Tools &amp; tech</strong><p>SchoolAI Coach, OpenAI Codex, preprocessing, temporal validation, fairness metrics, and HTML/CSS.</p></article>
+      </section>
+
+      <div class="detail-layout">
+        <div class="detail-content">
+          <section class="detail-section" id="description">
+            <p class="eyebrow">Description</p>
+            <h2>From data problems to defensible decisions.</h2>
+            <p class="lead">The original activity used an AI coach to present progressively complex data scenarios. Each one required a decision, supporting reasoning, and a response to feedback. I adapted that work into a professional case study focused on the assumptions, trade-offs, and safeguards that generalize to real ML projects.</p>
+            <figure class="artifact-image"><img src="assets/images/responsible-ml-workflow.jpg" alt="Abstract model-evaluation workflow showing data layers, branching decisions, and a human oversight checkpoint" width="1536" height="1024" loading="lazy"><figcaption>Supporting illustration: responsible ML requires connected decisions across data, evaluation, governance, and human oversight.</figcaption></figure>
+          </section>
+
+          <section class="detail-section" id="scenarios">
+            <p class="eyebrow">Tangible artifact</p>
+            <h2>Three scenarios, three risk profiles</h2>
+            <div class="case-grid three">
+              <article class="case-card gold"><p class="project-number">Scenario 01</p><h3>Missing telecom data</h3><p><strong>Challenge:</strong> Fifteen percent of customer-service call counts were missing or incomplete in a churn dataset.</p><p><strong>Decision:</strong> Investigate the missingness mechanism, reconcile records with source logs, add a missingness indicator, and compare robust imputation methods.</p><p><strong>Control:</strong> Fit preprocessing on training data only, run sensitivity tests, and monitor missingness by time, plan, and call center.</p></article>
+              <article class="case-card accent"><p class="project-number">Scenario 02</p><h3>Fraud under temporal shift</h3><p><strong>Challenge:</strong> Fraud was rare, increased sharply, changed form, and included a feature collected only in recent months.</p><p><strong>Decision:</strong> Use time-based validation, class weighting, operational metrics, and separate stable-feature and recent-feature models.</p><p><strong>Control:</strong> Test on the newest mature labels, retain a fallback model, and monitor drift after deployment.</p></article>
+              <article class="case-card"><p class="project-number">Scenario 03</p><h3>Biased hiring text</h3><p><strong>Challenge:</strong> Resume text was unstructured, historical labels were noisy, outcomes differed by group, and explanations were required.</p><p><strong>Decision:</strong> Use decision support only, extract job-related evidence, create rubric-based labels, and favor an interpretable approach.</p><p><strong>Control:</strong> Evaluate subgroup errors, run matched-resume tests, preserve human review, and provide an appeal path.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="framework">
+            <p class="eyebrow">Reusable method</p>
+            <h2>A five-step decision framework</h2>
+            <ol class="step-list">
+              <li><strong>Diagnose</strong>Identify how the data problem arose before selecting a statistical fix.</li>
+              <li><strong>Protect</strong>Prevent leakage and preserve realistic time, prevalence, and deployment conditions.</li>
+              <li><strong>Compare</strong>Test reasonable alternatives instead of relying on one preferred technique.</li>
+              <li><strong>Evaluate</strong>Use metrics tied to business costs, affected groups, and operational capacity.</li>
+              <li><strong>Monitor</strong>Define drift, fairness, and data-quality signals that trigger investigation or retraining.</li>
+            </ol>
+            <div class="callout"><strong>Central lesson</strong>A model can be technically accurate and still be unreliable or harmful if its data assumptions, validation design, explanations, or deployment controls are weak.</div>
+          </section>
+
+          <section class="detail-section" id="process">
+            <p class="eyebrow">Process</p>
+            <h2>How the learning activity became a professional artifact</h2>
+            <div class="comparison-grid">
+              <article class="content-card gold"><h3>Original activity</h3><ul><li>Conversational responses to an AI coach</li><li>Immediate feedback and follow-up questions</li><li>Detailed exploration of possible techniques</li></ul></article>
+              <article class="content-card accent"><h3>Portfolio adaptation</h3><ul><li>Concise decisions organized by business problem</li><li>Explicit assumptions, controls, and deployment risks</li><li>A reusable framework for technical and governance audiences</li></ul></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="value-proposition">
+            <p class="eyebrow">Value proposition of the artifact</p>
+            <h2>Why this work matters</h2>
+            <div class="content-grid">
+              <article class="content-card gold"><h3>Unique value</h3><p>This work demonstrates my ability to diagnose data problems, select defensible ML strategies, and explain trade-offs in business terms while connecting model performance to fairness, resilience, and accountability.</p></article>
+              <article class="content-card accent"><h3>Relevance</h3><p>Technical and governance teams need practitioners who recognize that preprocessing and validation choices encode assumptions about people, time, risk, and acceptable error. This artifact makes those assumptions visible.</p></article>
+            </div>
+          </section>
+
+          <section class="detail-section" id="references">
+            <p class="eyebrow">References &amp; tool disclosure</p>
+            <h2>Source context</h2>
+            <p class="lead">The scenarios and feedback originated in the course-provided SchoolAI Data Challenge Scenarios Coach; no external references were required for the original submission.</p>
+            <div class="callout"><strong>AI tool disclosure</strong>I used SchoolAI for the original interactive activity and OpenAI Codex to shorten, reorganize, and present the work for this portfolio. I reviewed the final content and take responsibility for the decisions, reasoning, and presentation.</div>
+          </section>
+
+          <a class="next-project" href="index.html#additional-work"><span><small>Portfolio overview</small><strong>Return to additional work</strong></span><span aria-hidden="true">→</span></a>
+        </div>
+        <nav class="detail-nav" aria-label="On this page"><strong>On this page</strong><ul><li><a href="#description">Description</a></li><li><a href="#scenarios">Scenarios</a></li><li><a href="#framework">Framework</a></li><li><a href="#process">Process</a></li><li><a href="#value-proposition">Value proposition</a></li><li><a href="#references">References</a></li></ul></nav>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><p>© 2026 Muhammad Abdulfatah · AIML-500 Professional Portfolio</p><p><a href="index.html#additional-work">Additional work</a> · <a href="mailto:muhammad.abdulfatah@myemail.indwes.edu">Contact</a></p></div></footer>
+</body>
+</html>

@@ -699,6 +699,10 @@ h3,
   grid-column: 1 / -1;
 }
 
+.project-card.project-card-wide {
+  grid-column: 1 / -1;
+}
+
 .project-topline {
   display: flex;
   align-items: center;
